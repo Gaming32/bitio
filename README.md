@@ -99,3 +99,9 @@ The wrapped stream.
 
 ### bitio.BitIO._buffer
 The bits that are waiting to be flushed to the wrapped stream. The length of this object should always be less than eight. If it isn't, call `bitio.BitIO.flush(False)`.
+
+### bitio.BitIO._readable
+Used for the return value of `bitio.BitIO.readable`. If the value is `None`, `self._stream.readable()` is returned. Otherwise, `self._readable` is returned.
+
+### bitio.BitIO._writable
+Used for the return value of `bitio.BitIO.writable`. If the value is `None`, `self._stream.writable()` is returned. Otherwise, `self._writable` is returned.
