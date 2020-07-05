@@ -26,6 +26,10 @@ r"""Exports a BitIO class to read and write bits on streams.
 """
 
 
+__author__ = 'Gaming32'
+__version__ = '1.1.0'
+
+
 import io
 from typing import Sequence
 
@@ -107,9 +111,10 @@ If c is ommitted or negative, reads all bits from the wrapped stream"""
         c -= len(result)
         bytes_to_read, bits_to_read = divmod(c, 8)
         result.frombytes(self._stream.read(bytes_to_read))
-        self._buffer.frombytes(self._stream.read(1))
-        result.extend(self._buffer[:bits_to_read])
-        self._buffer = self._buffer[bits_to_read:]
+        if bits_to_read:
+            self._buffer.frombytes(self._stream.read(1))
+            result.extend(self._buffer[:bits_to_read])
+            self._buffer = self._buffer[bits_to_read:]
         return result
 
     def close(self):
