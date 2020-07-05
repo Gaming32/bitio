@@ -3,7 +3,7 @@ A library that exports a BitIO class to read and write bits on streams.
 
 ``` python
 >>> from io import BytesIO
-from bitio import BitIO
+>>> from bitio import BitIO
 >>> stream = BytesIO()
 >>>
 >>> wrapped = BitIO(stream)
